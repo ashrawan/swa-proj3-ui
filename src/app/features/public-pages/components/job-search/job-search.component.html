@@ -1,0 +1,16 @@
+
+
+<form role="form" (ngSubmit)="onSearchSubmit()" novalidate="novalidate">
+    <div class="d-flex">
+        <div class="form-floating w-100 mx-3">
+            <input type="text" class="form-control" id="floatingSearchText"
+                placeholder="What are you searching ?" [(ngModel)]="searchText"
+                [ngModelOptions]="{standalone: true}" required>
+            <label class="lead text-muted fw-normal-50" for="floatingSearchText"> job title, keywords or company </label>
+        </div>
+
+        <div class="align-self-center">
+            <button type="submit" class="btn btn-lg btn-primary rounded-pill">Search</button>
+        </div>
+    </div>
+</form>
