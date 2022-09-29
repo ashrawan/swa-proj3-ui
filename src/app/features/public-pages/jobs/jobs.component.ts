@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, convertToParamMap, ParamMap, Params } from '@angular/router';
 import { QueryParamKey } from '@app/core/core.constant';
+import { JobDTO } from '@app/core/core.model';
+import { SearchServiceService } from '@app/core/services/search-service.service';
 import { filter, Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -16,7 +18,9 @@ export class JobsComponent implements OnInit {
   routeQueryParams: Params = {};
   paramMap!: ParamMap;
 
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder) { }
+  jobs: JobDTO[] = [];
+
+  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private searchService: SearchServiceService) { }
 
   ngOnInit(): void {
     this.processRouteQueryParams();
@@ -40,8 +44,10 @@ export class JobsComponent implements OnInit {
       });
   }
 
-  public searchRequest(query: String): void {
-    
+  public searchRequest(query: string): void {
+    this.searchService.getAllJobs(query).subscribe(response => {
+      this.jobs = response;
+    });
   }
 
 }

@@ -18,6 +18,11 @@ export class ApiEndpoints {
 
     };
 
+    static readonly SEARCH = {
+        JOB_SEARCH: API_ENDPOINT + '/search/job/all',
+        CANDIDATE_SEARCH: API_ENDPOINT + '/search/candidate',
+    };
+
     // static readonly USERS = {
     //     MAIN: API_ENDPOINT + '/users',
     //     ME: API_ENDPOINT + '/users/me'
