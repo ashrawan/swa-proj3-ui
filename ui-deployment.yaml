@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: swa-ui-service
+spec:
+  selector:
+    app: swa-ui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swa-ui
+spec:
+  selector:
+    matchLabels:
+      app: swa-ui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: swa-ui
+    spec:
+      containers:
+        - name: swa-ui
+          image: ashrawan/swa-ui
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   appBrandName: 'My App',
-  apiUrl: 'http://34.110.201.13'
+  apiUrl: 'http://35.193.139.217'
 };
 
 /*
